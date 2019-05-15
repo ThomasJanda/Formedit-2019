@@ -11,6 +11,10 @@ Editor
 Editor mode call:
 Url + editor.php
 
+![alt text](editor.png)
+
 Interpreter
 ---
 working in progress
+
+
