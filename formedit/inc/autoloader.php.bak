@@ -1,0 +1,63 @@
+<?php
+
+spl_autoload_register(function ($className) {
+    $oAutoloader = autoloader::getInstance();
+    $ret = $oAutoloader->load($className);
+    if ($ret == false) {
+        //whatever
+    }
+
+    return $ret;
+});
+
+
+
+
+class autoloader
+{
+    private static $instance = null;
+
+    public static function getInstance()
+    {
+        if (self::$instance === null) {
+            self::$instance = new static();
+        }
+        return self::$instance;
+    }
+
+
+
+    /**
+     * @param $classNameOriginal
+     *
+     * @return bool
+     */
+    public function load($classNameOriginal)
+    {
+        //test from root if present
+        $file = __DIR__."/../".str_replace("\\","/",$classNameOriginal).".php";
+        if ($this->_requireFileIfExist($file)) {
+            return true;
+        }
+
+        return false;
+    }
+
+
+    /**
+     * include the file if require.
+     *
+     * @param $file
+     *
+     * @return bool
+     */
+    protected function _requireFileIfExist($file)
+    {
+        if (file_exists($file)) {
+            require_once($file);
+            return true;
+        }
+
+        return false;
+    }
+}

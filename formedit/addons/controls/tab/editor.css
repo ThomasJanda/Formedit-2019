@@ -1,0 +1,59 @@
+.control_tab > title
+{
+    display:none !important;
+}
+.control_tab:not(.relative) > .tabcontent  > .tabcontainer
+{
+    overflow:hidden;
+}
+.control_tab.relative > .tabcontent  > .tabcontainer
+{
+    min-height: 20px;
+}
+.tabheader
+{
+    position: absolute;
+    left:0;
+    right:0;
+    top:0;
+    height:40px;
+    border-bottom:1px solid black;
+    line-height:40px;
+    white-space: nowrap;
+}
+.tabheader > button
+{
+    height:30px;
+    padding:5px;
+    cursor:pointer;
+}
+.tabheader > button.active
+{
+    font-weight:bold;
+}
+
+.tabcontent
+{
+    position:relative;
+    height: calc(100% - 40px);
+    margin-top:40px;
+    padding:3px;
+    padding-top:0px;
+}
+.tabcontent > .tabcontainer
+{
+    position:relative;
+    width:100%;
+    height:100%;
+    display:none;
+    border:1px solid black;
+    border-top:0;
+}
+.tabcontent > .tabcontainer.active
+ {
+     display:block;
+ }
+.tabcontent > .tabcontainer > title
+{
+    position:absolute;
+}

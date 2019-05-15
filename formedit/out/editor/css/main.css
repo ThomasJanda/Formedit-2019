@@ -1,0 +1,525 @@
+html, body
+{
+    padding:0;
+    margin:0;
+    height:100%;
+    background-color:var(--color-dark);
+    font-size:12px;
+    font-family:Arial;
+}
+button
+{
+    white-space: nowrap;
+    border: 1px solid gray;
+    margin:0;
+    background-color:var(--color-light-dark);
+    cursor:pointer;
+    padding:5px 10px;
+    text-align:center;
+    width:150px;
+}
+button:hover
+{
+    background-color:var(--color-light-highlight);
+}
+
+*
+{
+    box-sizing: border-box;
+}
+
+.left
+{
+    float:left;
+}
+.right
+{
+    float:right;
+}
+
+.grid
+{
+    position:absolute;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    top:0px;
+}
+.griditem
+{
+    position:relative;
+}
+.griditem#menu
+{
+    position:absolute;
+    top:0px;
+    left:0px;
+    right:0px;
+    height:30px;
+}
+.griditem#menu #menu_project_name
+{
+    line-height:30px;
+    vertical-align: middle;
+    padding:0px 10px;
+    color:var(--color-bright);
+}
+.griditem#menu #menu_project_name::before {
+    content: "Project: ";
+}
+.griditem#menu #menu_project_path
+{
+    line-height:30px;
+    vertical-align: middle;
+    padding:0px 10px;
+    color:var(--color-bright);
+}
+.griditem#menu #menu_project_path::before {
+    content: "Path: ";
+}
+
+.griditem#controls
+{
+    position:absolute;
+    top:30px;
+    left:0px;
+    width:calc(var(--col-width-left) * 1px);
+    bottom:0px;
+    overflow-y: scroll;
+}
+.griditem#controls select
+{
+    width:100%;
+}
+.griditemsizer
+{
+    z-index:1000;
+    position: absolute;
+    right:0px;
+    top:30px;
+    bottom:0px;
+    width:4px;
+    background-color:var(--color-light-dark);
+    cursor:ew-resize;
+}
+.griditemsizer[data-right=".griditem#desktopborder"]
+{
+    left:calc(var(--col-width-left) * 1px);
+}
+.griditemsizer[data-left=".griditem#desktopborder"]
+{
+    right:calc(var(--col-width-right) * 1px);
+}
+.griditem#desktopborder
+{
+    /*overflow: scroll;*/
+    position: absolute;
+    left:calc(calc(var(--col-width-left) * 1px) + 5px);
+    top:30px;
+    bottom:0px;
+    right:calc(calc(var(--col-width-right) * 1px) + 5px);
+    background-color:var(--color-middle-dark);
+}
+/*
+.griditem#desktopborder > label
+{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    font-size:30px;
+    z-index: 0;
+}
+*/
+.griditem#desktopborder > .desktop_form
+{
+    display: none;
+    position:absolute;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    top:0px;
+}
+.griditem#desktopborder > .desktop_form.selected
+{
+    display: block;
+}
+.griditem#desktopborder > .desktop_form > .desktop_panel_bar {
+    border-bottom:1px solid black;
+    height:30px;
+}
+.griditem#desktopborder > .desktop_form > .desktop_panel_bar button
+{
+    white-space: nowrap;
+    border: 0;
+    margin:2px 0px;
+    display: inline-block;
+    background-color:var(--color-light-dark);
+    cursor:pointer;
+    padding:5px 10px;
+    text-align:left;
+    border-radius: 5px 5px 0px 0px;
+}
+.griditem#desktopborder > .desktop_form > .desktop_panel_bar button.selected,
+.griditem#desktopborder > .desktop_form > .desktop_panel_bar button:hover
+{
+    background-color:var(--color-light-highlight);
+}
+.griditem#desktopborder > .desktop_form > .desktop_panel
+{
+    position:absolute;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    top:30px;
+}
+.griditem#desktopborder > .desktop_form > .desktop_panel > .desktop_panel_item
+{
+    display: none;
+    position:absolute;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    top:0px;
+}
+.griditem#desktopborder > .desktop_form > .desktop_panel > .desktop_panel_item.desktop_elements
+{
+    display: block;
+    overflow: scroll;
+}
+.griditem#desktopborder > .desktop_form > .desktop_panel > .desktop_panel_item > pre
+{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    margin:0;
+}
+.griditem#desktopborder > .desktop_form > .desktop_panel > .desktop_panel_item > .desktop
+{
+    border:1px solid transparent;
+    position:static;
+    min-height: 3000px;
+    height: 3000px;
+    /*min-width: 3000px;*/
+    /*left:0px;*/
+    /*top:0px;*/
+    background-image:url('../../editor/img/grid.png');
+    box-sizing: border-box;
+    background-color:var(--color-bright);
+    z-index:1;
+    background-position:-1px -1px;
+}
+/*
+.griditem#desktopborder > .desktop.selected
+{
+    display:block;
+    background-color: var(--color-bright) !important;
+}
+*/
+.griditem#desktopborder > .desktop_form > .desktop_panel > .desktop_elements > .desktop div[data-dropable]
+{
+    background-image:url('../../editor/img/grid.png');
+}
+.griditem#property
+{
+    position:absolute;
+    top:30px;
+    right:0px;
+    width:calc(var(--col-width-right) * 1px);
+    bottom:0px;
+    overflow:hidden;
+    overflow-y:scroll;
+}
+.griditem#property input#sidebar_property_search
+{
+    width:calc(100% - 90px);
+}
+.griditem#property > .mainsizer
+{
+    position: absolute;
+    left:0px;
+    top:0px;
+    bottom: 0px;
+    width:5px;
+    background-color:var(--color-light-dark);
+    cursor:ew-resize;
+}
+
+
+
+
+#controls div.headline,
+#property div.headline
+{
+    position:sticky;
+    top:0;
+    z-index: 2;
+
+}
+
+
+
+.headline
+{
+    font-weight:bold;
+    font-size:1.2em;
+    padding:5px 3px;
+    background-color:var(--color-middle-dark);
+
+    -webkit-user-select: none; /* Safari 3.1+ */
+    -moz-user-select: none; /* Firefox 2+ */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none; /* Standard syntax */
+}
+
+
+
+.toolbox
+{
+    border-top:1px solid var(--color-deep-dark);
+    background-color:var(--color-bright);
+}
+.toolbox_headline
+{
+    font-weight:bold;
+    font-size:1.2em;
+    padding:5px 3px;
+    cursor:pointer;
+    background-color:var(--color-light-dark);
+
+    -webkit-user-select: none; /* Safari 3.1+ */
+    -moz-user-select: none; /* Firefox 2+ */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none; /* Standard syntax */
+}
+.toolbox_container
+{
+    display:block;
+}
+.toolbox[data-toolbox_container=closed] .toolbox_container
+{
+    display:none;
+}
+input#sidebar_tools_search
+{
+    width: calc(100% - 50px);
+}
+
+
+.group
+{
+    border-top:1px solid var(--color-deep-dark);
+    background-color:var(--color-bright);
+}
+.group button,
+.group_footer button
+{
+    width:100%;
+}
+.group_headline
+{
+    font-weight:bold;
+    font-size:1.2em;
+    padding:5px 3px;
+    cursor:pointer;
+    background-color:var(--color-light-dark);
+
+    -webkit-user-select: none; /* Safari 3.1+ */
+    -moz-user-select: none; /* Firefox 2+ */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none; /* Standard syntax */
+}
+.group_container
+{
+    display:block;
+}
+.group_container table
+{
+    width:100%;
+}
+.group_container table th
+{
+    text-align:left;
+    width:180px !important;
+    vertical-align: top;
+}
+.group_container table td
+{
+    text-align:left;
+    vertical-align: top;
+}
+.group_container table th.group_subheader
+{
+    background-color:var(--color-light-dark);
+    padding:3px;
+    width:100%;
+}
+.group_container .property_popup
+{
+    position:fixed;
+    left:100px;
+    top:100px;
+    bottom:100px;
+    right:100px;
+    z-index:100001;
+    background-color:whitesmoke;
+    border:1px solid lightgrey;
+    display:none;
+}
+.group_container .property_popup .property_popup_close
+{
+    position:absolute;
+    right:10px;
+    top:10px;
+    width:20px;
+    height:20px;
+    background-color:red;
+    cursor:pointer;
+    line-height:20px;
+    vertical-align: middle;
+    text-align:center;
+}
+.group_container .property_popup .property_popup_title
+{
+    position:absolute;
+    left:10px;
+    top:10px;
+    width:calc(100% - 40px - 10px);
+    height:20px;
+    font-weight: bold;
+    font-size:1.3em;
+}
+.group_container .property_popup .property_popup_content
+{
+    overflow:scroll;
+    position:absolute;
+    top:40px;
+    left:10px;
+    right:10px;
+    bottom:50px;
+    border:1px solid lightgrey;
+    padding:10px;
+}
+.group_container .property_popup .property_popup_content .property_popup_content_title
+{
+    margin-top:10px;
+    font-weight:bold;
+    font-size:1.1em;
+}
+.group_container .property_popup .property_popup_content .property_popup_content_section
+{
+    margin-bottom:20px;
+}
+.group_container .property_popup .property_popup_content textarea,
+.group_container .property_popup .property_popup_content pre
+{
+    min-width:100%;
+    max-width:100%;
+    height:200px;
+}
+.group_container .property_popup .property_popup_content input[type=text],
+.group_container .property_popup .property_popup_content select
+{
+    min-width:100%;
+    max-width:100%;
+}
+.group_container .property_popup .property_popup_content select.half
+{
+    min-width:calc(50% - 2px);
+    max-width:calc(50% - 2px);
+}
+.group_container .property_popup .property_popup_content table
+{
+    width:100%;
+    background-color:white;
+}
+.group_container .property_popup .property_popup_content table tr:nth-child(even)
+{
+    background-color:whitesmoke;
+}
+.group_container .property_popup .property_popup_content table tr th
+{
+    font-weight:bold;
+    background-color:gray;
+}
+.group_container .property_popup .property_popup_buttons
+{
+    position:absolute;
+    left:10px;
+    bottom:10px;
+    right:10px;
+    height:30px;
+}
+.group_container .property_popup .property_popup_close::after
+{
+    font-size:20px;
+    color:white;
+    content: "\00d7";
+}
+.group_container .property_popup .property_popup_buttons button
+{
+    width:150px;
+    margin-right:10px;
+}
+.group_container .property_popup[data-open='1']
+{
+    display: block;
+}
+
+.group_container table tr.TYPE_textbox input[type=text],
+.group_container table tr.TYPE_textboxPopulate input[type=text],
+.group_container table tr.TYPE_textarea textarea,
+.group_container table tr.TYPE_htmlarea textarea,
+.group_container table tr.TYPE_selectbox select,
+.group_container table tr.TYPE_selectboxSwitch select,
+.group_container table tr.TYPE_selectboxForms select,
+.group_container table tr.TYPE_selectboxObjectMembers select,
+.group_container table tr.TYPE_selectboxObjects select
+{
+    width:calc(100% - 10px);
+}
+.group[data-group_container=closed] .group_container
+{
+    display:none;
+}
+.group_footer
+{
+    background:var(--color-bright);
+    padding:10px;
+}
+
+/* CKEditor 5 */
+/*
+.group_container table tr.TYPE_htmlarea .ck-editor__editable {
+    min-height: 400px;
+}
+*/
+
+
+#wait
+{
+    display:none;
+    z-index: 100000;
+    background-color:var(--color-bright);
+    opacity: 0.2;
+    position:absolute;
+    left:0px;
+    top:0px;
+    right:0px;
+    bottom:0px;
+}
+#wait.show
+{
+    display:block;
+}
+
+
+#menu_form
+{
+    background-color:var(--color-light-dark);
+    padding:5px;
+}

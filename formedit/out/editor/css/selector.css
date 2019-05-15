@@ -1,0 +1,10 @@
+#selectorrect
+{
+    z-index: 1000000;
+    backgroud: transparent;
+    border: 1px dotted var(--color-dark-highlight);
+    position: absolute;
+    display: none;
+    background-color:var(--color-light-highlight);
+    opacity: 0.3;
+}

@@ -1,0 +1,330 @@
+html, body
+{
+    padding:0;
+    margin:0;
+    height:100%;
+    background-color:var(--color-dark);
+    font-size:12px;
+    font-family:Arial;
+}
+div
+{
+    box-sizing: border-box;
+}
+
+
+
+#wait
+{
+    display:none;
+    z-index: 100000;
+    background-color:var(--color-bright);
+    opacity: 0.2;
+    position:absolute;
+    left:0px;
+    top:0px;
+    right:0px;
+    bottom:0px;
+}
+#wait.show
+{
+    display:block;
+}
+
+
+
+
+#top
+{
+    position: absolute;
+    left:0;
+    right:0;
+    top:0;
+    height:40px;
+}
+#bottom
+{
+    position: absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    height:60px;
+}
+#main
+{
+    position: absolute;
+    left:0;
+    right:0;
+    top:40px;
+    bottom:60px;
+    background-color:var(--color-bright);
+}
+#main .search
+{
+    position: absolute;
+    left:0;
+    width:200px;
+    top:0px;
+    height:25px;
+    line-height:25px;
+    border-right: 1px solid var(--color-middle-dark);
+}
+#main .search input
+{
+    border: 1px solid var(--color-light-dark);
+    width: calc(100% - 8px);
+    padding: 0;
+    margin: 4px;
+}
+#main .treemenu
+{
+    position: absolute;
+    left:0;
+    width:200px;
+    top:25px;
+    height:25px;
+    border-right: 1px solid var(--color-middle-dark);
+    line-height:25px;
+}
+#main .tree
+{
+    position: absolute;
+    left:0;
+    width:200px;
+    top:50px;
+    bottom:0px;
+    overflow:scroll;
+    border-right: 1px solid var(--color-middle-dark);
+}
+#main .path
+{
+    position: absolute;
+    left:200px;
+    right:0px;
+    top:0px;
+    height:25px;
+    overflow:hidden;
+    overflow-y:scroll;
+    line-height: 25px;
+    padding: 0 5px;
+    vertical-align: middle;
+}
+#main .path input
+{
+    width: calc(100% - 50px);
+    border: 0;
+    line-height: 25px;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0 5px;
+}
+#main .files
+{
+    position: absolute;
+    left:200px;
+    right:0px;
+    top:25px;
+    bottom:0px;
+    overflow:hidden;
+    overflow-y:scroll;
+}
+
+
+
+/**
+tree
+ */
+#main .tree
+{
+    padding:5px;
+}
+#main .tree .folder
+{
+    padding:5px 0px;
+}
+#main .tree .folder .title span
+{
+    width:10px;
+    line-height:15px;
+    vertical-align: middle;
+    text-align:center;
+    font-weight:bold;
+    cursor:pointer;
+    display:inline-block;
+}
+#main .tree .folder.hide
+{
+    display:none;
+}
+#main .tree .folder.hassubfolders[data-folder_open="1"] > .title > span:after
+{
+    content: "-";
+}
+#main .tree .folder.hassubfolders[data-folder_open="0"] > .title > span:after
+{
+    content: "+";
+}
+#main .tree .folder .title label
+{
+    line-height:15px;
+    vertical-align: middle;
+    display:inline-block;
+    white-space: nowrap;
+    cursor:pointer;
+    width:calc(100% - 20px);
+    box-sizing: border-box;
+}
+#main .tree .folder .title label:before
+{
+    content: url('../../editor/img/folder.png');
+    vertical-align: middle;
+    margin-right: 3px;
+}
+#main .tree .folder .title:hover
+{
+    background-color:var(--color-light-dark);
+}
+#main .tree .folder.selected > .title > label
+{
+    font-weight:bold;
+}
+#main .tree .folder .folders
+{
+    padding-left:5px;
+    display:none;
+}
+#main .tree .folder[data-folder_open="1"] > .folders
+{
+    display:block;
+}
+
+
+
+/**
+files
+ */
+#main .files .file
+{
+    height:50px;
+    line-height:40px;
+    border-top:1px solid var(--color-light-dark);
+    position:relative;
+}
+#main .files .file.inactive
+{
+    opacity: 0.5;
+}
+#main .files .file.active:hover
+{
+    background-color:var(--color-light-dark);
+    cursor:pointer;
+}
+#main .files .file .img
+{
+    height:40px;
+    line-height:40px;
+    width:40px;
+    text-align: center;
+    position:absolute;
+    left:0px;
+    top:0px;
+    bottom:0px;
+    padding:5px;
+}
+#main .files .file .img img
+{
+    vertical-align: middle;
+    object-fit: contain;
+    max-width:100%;
+    max-height:100%;
+}
+#main .files .file .title
+{
+    position: absolute;
+    left: 50px;
+    right: 0px;
+    top: 10px;
+    height: 15px;
+    line-height: 15px;
+}
+#main .files .file .info
+{
+    position:absolute;
+    left:50px;
+    right:calc((100% - 30px) / 2);
+    top:25px;
+    height:15px;
+    line-height:15px;
+    color:var(--color-middle-dark);
+}
+#main .files .file .action
+{
+    display:none;
+    position: absolute;
+    right: 0;
+    padding-right: 10px;
+}
+#main .files .file:hover .action
+{
+    display:block;
+}
+
+
+
+/**
+top
+ */
+#top
+{
+    line-height:40px;
+    padding:0px 20px;
+    font-size: 20px;
+    color: var(--color-bright);
+}
+#top .title
+{
+    float:left;
+}
+#top .action
+{
+    float:right;
+}
+#top .action div
+{
+    box-sizing: border-box;
+    cursor:pointer;
+    padding:0px 10px;
+    float:left;
+}
+
+#top .action div.uploadbox
+{
+    border:1px solid var(--color-bright);
+    line-height:35px;
+}
+
+
+
+/**
+bottom
+ */
+#bottom
+{
+    line-height:60px;
+    padding:0px 20px;
+}
+#bottom input
+{
+    width:calc(100% - 350px);
+    vertical-align: middle;
+}
+#bottom select
+{
+    width:100px;
+    vertical-align: middle;
+}
+#bottom button
+{
+    width:100px;
+    vertical-align: middle;
+}

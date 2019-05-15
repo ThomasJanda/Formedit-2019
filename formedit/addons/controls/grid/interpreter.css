@@ -1,0 +1,27 @@
+.control_grid
+{
+    padding:0 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+.control_grid > .row
+{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    flex: 1 1 0;
+}
+.control_grid > .row > .cell
+{
+    box-sizing: border-box;
+    border:1px solid lightgrey;
+    overflow: hidden;
+    flex: 1 1 0;
+    position: relative;
+}
+.control_grid > .row > .cell > title
+{
+    position:absolute;
+}

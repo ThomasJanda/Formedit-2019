@@ -1,0 +1,19 @@
+{
+  "name": "janda/formedit",
+  "license": "proprietary",
+  "version": "0.0.5",
+  "description": "IDE for php",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Thomas Janda",
+      "email": "info@reisacher-software.de"
+    }
+  ],
+  "require": {
+    "php": "^7.2"
+  },
+  "autoload": {
+    "psr-4": {"formedit\\": "formedit/"}
+  }
+}

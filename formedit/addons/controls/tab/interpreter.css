@@ -1,0 +1,53 @@
+.control_tab .tabheader
+{
+    position: absolute;
+    left:0;
+    right:0;
+    top:0;
+    height:40px;
+    line-height:40px;
+    white-space: nowrap;
+}
+.control_tab .tabheader > button
+{
+    margin-top:5px;
+    height:35px;
+    padding:5px;
+    margin-left: 5px;
+    border:1px solid gray;
+    border-bottom: 0;
+    box-sizing: border-box;
+    border-radius: 5px 5px 0px 0px;
+    cursor:pointer;
+}
+.control_tab .tabheader > button.active
+{
+    font-weight:bold;
+}
+
+.control_tab .tabcontent
+{
+    position: absolute;
+    left:0;
+    right:0;
+    top:40px;
+    bottom:0px;
+    border:1px solid gray;
+    border-radius: 5px;
+}
+.control_tab .tabcontent > .tabcontainer
+{
+    position:absolute;
+    left:3px;
+    right:3px;
+    top:0;
+    bottom:3px;
+    display:none;
+    border-top:0;
+    height:auto;
+    width: auto;
+}
+.control_tab .tabcontent > .tabcontainer.active
+{
+    display:block;
+}

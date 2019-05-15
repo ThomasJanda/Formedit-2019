@@ -1,0 +1,40 @@
+html, body
+{
+    padding:0;
+    margin:0;
+    height:100%;
+    font-size:12px;
+    font-family:Arial;
+}
+* {
+    box-sizing: border-box;
+}
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+.left
+{
+    float:left;
+}
+.right
+{
+    float:right;
+}
+
+.control
+{
+    border:1px solid gray;
+}
+.control.absolute {
+    position: absolute;
+    overflow: hidden;
+}
+.control.relative,
+.control.fill {
+    position: relative;
+    overflow:auto;
+}

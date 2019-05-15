@@ -1,0 +1,37 @@
+<?php
+//require(__DIR__."/autoloader.php");
+
+/*
+ini_set('unserialize_callback_func', 'debug_unserialize');
+function debug_unserialize($classname)
+{
+    die(print_r($classname,true));
+}
+*/
+
+require(__DIR__."/session.php");
+if (!function_exists('getSession')) {
+    /**
+     * @return \session
+     */
+    function getSession()
+    {
+        return \session::getInstance();
+    }
+}
+//start session
+getSession();
+
+
+require(__DIR__."/config.php");
+if (!function_exists('getConfig')) {
+    /**
+     * @return \config
+     */
+    function getConfig()
+    {
+        return \config::getInstance();
+    }
+}
+
+

@@ -1,0 +1,125 @@
+/**
+sidebar
+ */
+#controls .control {
+    border-top: 1px solid var(--color-deep-dark);
+    box-sizing: border-box;
+    cursor: move;
+    padding: 5px 10px;
+
+    -webkit-user-select: none; /* Safari 3.1+ */
+    -moz-user-select: none; /* Firefox 2+ */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none; /* Standard syntax */
+}
+
+
+/**
+desktop
+ */
+.desktop .control {
+    border: 2px solid var(--color-deep-dark);
+    box-sizing: border-box;
+    background-color: var(--color-control);
+    width: 100px;
+    height: 25px;
+    line-height: 20px;
+    /*padding-left: 15px;*/
+
+    -webkit-user-select: none; /* Safari 3.1+ */
+    -moz-user-select: none; /* Firefox 2+ */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none; /* Standard syntax */
+}
+.desktop .control .control_body
+{
+    position:relative;
+    height:100%;
+    width:100%;
+}
+.desktop .control title
+{
+    display:inline;
+}
+
+
+.desktop .control[data-dropable]
+{
+    background-color:var(--color-control-drop);
+}
+.desktop .control.selected
+{
+    background-color:var(--color-control-selected);
+}
+
+.desktop .control.absolute {
+    position: absolute;
+    overflow: hidden;
+}
+.desktop .control.relative,
+.desktop .control.fill {
+    position: relative;
+    overflow:auto;
+}
+
+.desktop .control mover {
+    position:absolute;
+    left:-2px;
+    top:-1px;
+    height:12px;
+    width:11px;
+    cursor: move;
+    visibility: hidden;
+    background-position: -2px -82px;
+    background-color:var(--color-bright);
+    border:1px solid var(--color-deep-dark);
+    z-index:10000;
+}
+.desktop .control sizer {
+    position:absolute;
+    right:0px;
+    bottom:0px;
+    height:10px;
+    width:10px;
+    padding-right:3px;
+    padding-bottom:3px;
+    cursor: nwse-resize;
+    visibility: hidden;
+    z-index:10000;
+}
+.desktop .control.selected > sizer,
+.desktop .control.selected > mover
+{
+    visibility: visible;
+}
+
+
+
+.control.relative.dragover_mouseover_relative [data-dropable]
+{
+    min-height:30px !important;
+}
+.control.relative insert
+{
+    display:none;
+    position:absolute;
+    background-color:red;
+    opacity: 0.5;
+    left:0;
+    right:0;
+    height:10px;
+    z-index:1000;
+}
+.control.relative insert.before
+{
+    top:0;
+}
+.control.relative > insert.after
+{
+    bottom:0;
+}
+.control.relative.dragover_mouseover_relative > insert.before,
+.control.relative.dragover_mouseover_relative > insert.after
+{
+    display:block;
+}
