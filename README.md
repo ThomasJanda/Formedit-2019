@@ -11,6 +11,8 @@ Editor
 Editor mode call:
 Url + editor.php
 
+Demo: http://www.reisacher-software.de/formedit2/editor.php
+
 ![alt text](editor.png)
 
 Interpreter
