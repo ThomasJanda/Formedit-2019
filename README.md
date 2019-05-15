@@ -1,7 +1,7 @@
 # Formedit
 Online IDE for business applications
 
-Setup:
+Setup
 ---
 Rename the config.inc.php.dist in config.inc.php
 Add all required information
