@@ -1,1 +1,3 @@
-.idea
+# ignore following files / directories
+/.idea
+/composer.phar
