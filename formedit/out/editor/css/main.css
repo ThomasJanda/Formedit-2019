@@ -224,7 +224,7 @@ button:hover
 {
     background-image:url('../../editor/img/grid.png');
 }
-.griditem#property
+.griditem#controlproperties
 {
     position:absolute;
     top:30px;
@@ -234,11 +234,11 @@ button:hover
     overflow:hidden;
     overflow-y:scroll;
 }
-.griditem#property input#sidebar_property_search
+.griditem#controlproperties input#sidebar_property_search
 {
     width:calc(100% - 90px);
 }
-.griditem#property > .mainsizer
+.griditem#controlproperties > .mainsizer
 {
     position: absolute;
     left:0px;
@@ -253,13 +253,43 @@ button:hover
 
 
 #controls div.headline,
-#property div.headline
+#property div.headline,
+#method div.headline
 {
     position:sticky;
     top:0;
     z-index: 2;
 
 }
+
+#controlproperties .controlproperties_header
+{
+    height:28px;
+    position:relative;
+}
+#controlproperties .controlproperties_header button
+{
+    position:absolute;
+    left:0px;
+    right:auto;
+    top:0px;
+    width:calc(50% - 1px);
+    bottom:0px;
+}
+#controlproperties .controlproperties_header button:last-child
+{
+    right:0px;
+    left:auto;
+}
+#controlproperties .controlproperties_container #property
+{
+    display:block;
+}
+#controlproperties .controlproperties_container #method
+{
+    display:none;
+}
+
 
 
 

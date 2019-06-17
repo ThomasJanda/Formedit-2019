@@ -168,16 +168,34 @@ foreach ($aAllControls as $sGroup => $aControls) {
     }
     ?>
 </div>
-<div class="griditemsizer" data-left=".griditem#desktopborder" data-right=".griditem#property" data-fixed="right"></div>
-<div class="griditem" id="property">
-    <div class="propertybox">
-        <div class="headline">
-            Properties
-            <input type="text" autocomplete="off" id="sidebar_property_search" value="">
+<div class="griditemsizer" data-left=".griditem#desktopborder" data-right=".griditem#controlproperties" data-fixed="right"></div>
+<div class="griditem" id="controlproperties">
+    <div class="controlproperties_header">
+        <button data-display="#property">Properties</button>
+        <button data-display="#method">Methods</button>
+    </div>
+    <div class="controlproperties_container">
+        <div id="method">
+            <div class="methodbox">
+                <div class="headline">
+                    Methods
+                    <input type="text" autocomplete="off" id="sidebar_property_search" value="">
+                </div>
+                <div id="methodbox_container" class="methodbox_container"></div>
+            </div>
         </div>
-        <div id="propertybox_container" class="propertybox_container"></div>
+        <div id="property">
+            <div class="propertybox">
+                <div class="headline">
+                    Properties
+                    <input type="text" autocomplete="off" id="sidebar_property_search" value="">
+                </div>
+                <div id="propertybox_container" class="propertybox_container"></div>
+            </div>
+        </div>
     </div>
 </div>
+
 
 <!-- always when a web service call, page will blocked -->
 <div id="wait" class="show"></div>
@@ -213,7 +231,9 @@ foreach ($aAllControls as $sGroup => $aControls) {
 <script src="formedit/out/editor/js/request.js"></script>
 <script src="formedit/out/editor/js/toolbar.js"></script>
 <script src="formedit/out/editor/js/desktop.js"></script>
+<script src="formedit/out/editor/js/propertycontainer.js"></script>
 <script src="formedit/out/editor/js/property.js"></script>
+<script src="formedit/out/editor/js/method.js"></script>
 <script src="formedit/out/editor/js/elements.js"></script>
 <script src="formedit/out/editor/js/contextmenu.js"></script>
 <script src="formedit/out/editor/js/clipboard.js"></script>

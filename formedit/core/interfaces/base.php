@@ -58,6 +58,15 @@ abstract class base
      */
     protected $_aProperties=[];
 
+
+    /**
+     * @var \formedit\core\method[]
+     */
+    protected $_aMethods=[];
+
+    /**
+     * @return array
+     */
     public function getDataForSave()
     {
         $aData=[];
@@ -67,6 +76,10 @@ abstract class base
         }
         return $aData;
     }
+
+    /**
+     * @param $aData
+     */
     public function setDataFromSave($aData)
     {
         foreach($aData as $sKey => $sValue)
@@ -84,7 +97,21 @@ abstract class base
     {
         $this->loadProperties();
         $this->loadPropertiesAfter();
+
+        $this->loadMethods();
+        $this->loadMethodsAfter();
     }
+
+
+    public function loadMethods()
+    {
+        $this->addMethod( new \formedit\core\method('init'));
+    }
+    public function loadMethodsAfter()
+    {
+
+    }
+
 
     /**
      * create all properties the object need
@@ -106,6 +133,45 @@ abstract class base
     {
         $this->init();
     }
+
+
+    /**
+     * @param \formedit\core\method $oMethod
+     * @param bool $bOnlyIfNotExists
+     */
+    public function addMethod($oMethod, $bOnlyIfNotExists=true)
+    {
+        if(!isset($this->_aMethods[$oMethod->getId()]) || $bOnlyIfNotExists==false)
+            $this->_aMethods[$oMethod->getId()]=$oMethod;
+        elseif(isset($this->_aMethods[$oMethod->getId()]))
+        {
+            //is present, do nothing
+        }
+    }
+
+    /**
+     * @param string $sName
+     * @return \formedit\core\method|null
+     */
+    public function getMethod($sName, $bDefaultEmptyMethod = true):?\formedit\core\method
+    {
+        if($this->getMethods())
+        {
+            foreach($this->getMethods() as $oMethod)
+            {
+                if($oMethod->getName()==$sName)
+                {
+                    return $oMethod;
+                }
+            }
+        }
+
+        if($bDefaultEmptyMethod)
+            return new \formedit\core\method();
+
+        return null;
+    }
+
 
 
     /**
@@ -187,11 +253,27 @@ abstract class base
     }
 
     /**
+     * @return \formedit\core\method[]
+     */
+    public function getMethods()
+    {
+        return $this->_aMethods;
+    }
+
+    /**
      * @return string
      */
     public function getPropertiesJson()
     {
-        return json_encode($this->_aProperties,JSON_PRETTY_PRINT);
+        return json_encode($this->getProperties(),JSON_PRETTY_PRINT);
+    }
+
+    /**
+     * @return string
+     */
+    public function getMethodsJson()
+    {
+        return json_encode($this->getMethods(), JSON_PRETTY_PRINT);
     }
 
     /**
