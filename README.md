@@ -1,4 +1,4 @@
-# Formedit
+# Formedit2 (beta)
 Online IDE for business applications
 
 Setup
