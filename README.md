@@ -1,5 +1,6 @@
-# Formedit 2019 (beta)
-Online IDE for business applications
+# Formedit 2019 (outdated)
+Online IDE for business applications.
+This repository will never update and was only a test how a Web IDE can build.
 
 Setup
 ---
